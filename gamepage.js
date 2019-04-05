@@ -1,5 +1,7 @@
 const question = document.getElementById("question");
 const answers = Array.from(document.getElementsByClassName("answer-text"));
+const scoreNumber = document.getElementById("score-number");
+const questionNumber = document.getElementById("question-number");
 
 let questions = [];
 let remainingQuestions = [];
@@ -9,10 +11,11 @@ let correctAnswer;
 let currentQuestion;
 let score = 0;
 const POINTS = 10;
+let questionCounter = 1;
 
 
 // Fetching request from api
-var url = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple";
+var url = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple"; 
     var xhr = new XMLHttpRequest;
     var res;
     xhr.onreadystatechange = function() {
@@ -43,6 +46,7 @@ var url = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&typ
 		if(remainingQuestions.length === 0){
 			return window.location.assign("endpage.html");
 		}
+		questionNumber.innerText = questionCounter + "/" + 10;
 		console.log(remainingQuestions);
 		const randomIndex = Math.floor(Math.random() * remainingQuestions.length);
 		const randomAnswerIndex = Math.floor(Math.random() * 3);
@@ -85,10 +89,10 @@ var url = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&typ
 				else {
 					console.log("fel svar");
 				}
-				function scoreboard(number) {
-					score+=number;
-				}
+				
+				questionCounter++;
 				console.log(score);
+				scoreNumber.innerText = score;
 				showQuestion();
 			})
 		});
