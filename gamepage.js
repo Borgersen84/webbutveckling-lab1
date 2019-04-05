@@ -5,6 +5,9 @@ let questions = [];
 let remainingQuestions = [];
 let incorrectAnswers = [];
 let allAnswers = [];
+let correctAnswer;
+let currentQuestion;
+let score = 0;
 
 
 // Fetching request from api
@@ -18,8 +21,8 @@ var url = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&typ
 				res.results.forEach(function (question) {
 				// pushing response to new array
 				questions.push(question);
-				})
-				 showQuestion();
+				});
+				 gameStarter();
             }
             if (xhr.status == 500) {
                 console.log("serverfel");
@@ -30,14 +33,19 @@ var url = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&typ
     xhr.responseType = "json";
     xhr.send();
 	
-	function showQuestion() {
+	function gameStarter() {
 		remainingQuestions = [... questions];
+		showQuestion();
+	}
+	
+	function showQuestion() {
+		
 		console.log(remainingQuestions);
 		const randomIndex = Math.floor(Math.random() * remainingQuestions.length);
 		const randomAnswerIndex = Math.floor(Math.random() * 3);
-		let currentQuestion = remainingQuestions[randomIndex].question;
+		currentQuestion = remainingQuestions[randomIndex].question;
 		question.innerText = currentQuestion;
-		let correctAnswer = remainingQuestions[randomIndex].correct_answer;
+		correctAnswer = remainingQuestions[randomIndex].correct_answer;
 		incorrectAnswers = remainingQuestions[randomIndex].incorrect_answers;
 		allAnswers = [... incorrectAnswers];
 		allAnswers.splice(randomAnswerIndex, 0, correctAnswer);
@@ -49,26 +57,37 @@ var url = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&typ
 		answers[1].innerText = allAnswers[1];
 		answers[2].innerText = allAnswers[2];
 		answers[3].innerText = allAnswers[3];
-		
-		answers.forEach(function(answer){
+		remainingQuestions.splice(randomIndex, 1);
+	};
+	
+	answers.forEach(function(answer){
 			answer.addEventListener("click", e => {
 				const chosenAnswer = e.target;
 				if(chosenAnswer === answers[0] && answers[0].innerText === correctAnswer){
 					console.log("Det funker");
+					score = score + 10;
 				}
 				else if(chosenAnswer === answers[1] && answers[1].innerText === correctAnswer){
 					console.log("Det funker");
+					score = score + 10;
 				}
 				else if(chosenAnswer === answers[2] && answers[2].innerText === correctAnswer){
 					console.log("Det funker");
+					score = score + 10;
 				}
 				else if(chosenAnswer === answers[3] && answers[3].innerText === correctAnswer){
 					console.log("Det funker");
+					score = score + 10;
 				}
 				else {
 					console.log("fel svar");
 				}
+				function scoreboard(number) {
+					score+=number;
+				}
+				console.log(score);
+				showQuestion();
 			})
 		});
-		
-	}
+	
+	
