@@ -2,6 +2,8 @@ const question = document.getElementById("question");
 const answers = Array.from(document.getElementsByClassName("answer-text"));
 const scoreNumber = document.getElementById("score-number");
 const questionNumber = document.getElementById("question-number");
+const progressBar = document.getElementById("progressbar-filled-up");
+const points = 10;
 
 let questions = [];
 let remainingQuestions = [];
@@ -10,7 +12,6 @@ let allAnswers = [];
 let correctAnswer;
 let currentQuestion;
 let score = 0;
-const POINTS = 10;
 let questionCounter = 1;
 
 
@@ -46,6 +47,7 @@ var url = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&typ
 		if(remainingQuestions.length === 0){
 			return window.location.assign("endpage.html");
 		}
+		progressBar.style.width = `${(questionCounter / 10) * 100}%`;
 		questionNumber.innerText = questionCounter + "/" + 10;
 		console.log(remainingQuestions);
 		const randomIndex = Math.floor(Math.random() * remainingQuestions.length);
@@ -72,19 +74,19 @@ var url = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&typ
 				const chosenAnswer = e.target;
 				if(chosenAnswer === answers[0] && answers[0].innerText === correctAnswer){
 					console.log("Det funker");
-					score += POINTS;
+					score += points;
 				}
 				else if(chosenAnswer === answers[1] && answers[1].innerText === correctAnswer){
 					console.log("Det funker");
-					score += POINTS;
+					score += points;
 				}
 				else if(chosenAnswer === answers[2] && answers[2].innerText === correctAnswer){
 					console.log("Det funker");
-					score += POINTS;
+					score += points;
 				}
 				else if(chosenAnswer === answers[3] && answers[3].innerText === correctAnswer){
 					console.log("Det funker");
-					score += POINTS;
+					score += points;
 				}
 				else {
 					console.log("fel svar");

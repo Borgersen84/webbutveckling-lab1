@@ -4,6 +4,9 @@
 	overflow: hidden;
 }
 
+*{
+	box-sizing: border-box;
+}
 
 .center {
     width: 100vw;
@@ -14,6 +17,7 @@
 	margin: 0 auto;
 	padding: 2rem;
 	flex-direction: column;
+	max-width: 80rem;
 }
 
 h1 {

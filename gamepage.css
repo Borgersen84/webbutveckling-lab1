@@ -1,14 +1,10 @@
-.question {
-	text-align: center;
-	width: 70%;
-	font-size: 3rem;
-	margin-bottom: 4rem;
-}
 
 .answers {
 	font-size: 2.2rem;
-	width: 30%;
+	width: 100%;
 	text-align: center;
+	color: blue;
+	background-color: white;
 }
 
 .answers-box {
@@ -17,6 +13,7 @@
 	border: 0.1rem solid blue;
 	margin-bottom: 0.3rem;
 	background-color: light-blue;
+	width: 100%
 }
 
 .answers-box:hover {
@@ -24,12 +21,14 @@
 }
 
 h2 {
-	font-size: 3rem;
+	font-size: 2.5rem;
+	text-align: center;
+	color: blue;
 }
 
 .hud {
 	display: flex;
-	font-size: 4rem;
+	font-size: 3rem;
 	text-align: center;
 }
 
@@ -45,6 +44,18 @@ h2 {
 	margin-left: 1.5rem;
 }
 
+#progressbar {
+	width: 100%;
+	height: 3rem;
+	border: 0.3rem solid blue;
+	margin-top: 1.5rem;
+}
+
+#progressbar-filled-up {
+	height: 2.4rem;
+	background-color: #24DB85;
+	width: 0%;
+}
 
 
 
