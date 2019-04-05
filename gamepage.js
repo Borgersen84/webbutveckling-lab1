@@ -8,6 +8,7 @@ let allAnswers = [];
 let correctAnswer;
 let currentQuestion;
 let score = 0;
+const POINTS = 10;
 
 
 // Fetching request from api
@@ -39,7 +40,9 @@ var url = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&typ
 	}
 	
 	function showQuestion() {
-		
+		if(remainingQuestions.length === 0){
+			return window.location.assign("endpage.html");
+		}
 		console.log(remainingQuestions);
 		const randomIndex = Math.floor(Math.random() * remainingQuestions.length);
 		const randomAnswerIndex = Math.floor(Math.random() * 3);
@@ -65,19 +68,19 @@ var url = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&typ
 				const chosenAnswer = e.target;
 				if(chosenAnswer === answers[0] && answers[0].innerText === correctAnswer){
 					console.log("Det funker");
-					score = score + 10;
+					score += POINTS;
 				}
 				else if(chosenAnswer === answers[1] && answers[1].innerText === correctAnswer){
 					console.log("Det funker");
-					score = score + 10;
+					score += POINTS;
 				}
 				else if(chosenAnswer === answers[2] && answers[2].innerText === correctAnswer){
 					console.log("Det funker");
-					score = score + 10;
+					score += POINTS;
 				}
 				else if(chosenAnswer === answers[3] && answers[3].innerText === correctAnswer){
 					console.log("Det funker");
-					score = score + 10;
+					score += POINTS;
 				}
 				else {
 					console.log("fel svar");
