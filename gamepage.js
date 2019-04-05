@@ -13,6 +13,7 @@ let correctAnswer;
 let currentQuestion;
 let score = 0;
 let questionCounter = 1;
+let finalScore = 0;
 
 
 // Fetching request from api
@@ -44,14 +45,16 @@ var url = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&typ
 	}
 	
 	function showQuestion() {
+
 		if(remainingQuestions.length === 0){
+			localStorage.setItem("finalScore", score);
 			return window.location.assign("endpage.html");
 		}
 		progressBar.style.width = `${(questionCounter / 10) * 100}%`;
 		questionNumber.innerText = questionCounter + "/" + 10;
 		console.log(remainingQuestions);
 		const randomIndex = Math.floor(Math.random() * remainingQuestions.length);
-		const randomAnswerIndex = Math.floor(Math.random() * 3);
+		const randomAnswerIndex = Math.floor(Math.random() * 4);
 		currentQuestion = remainingQuestions[randomIndex].question;
 		question.innerText = currentQuestion;
 		correctAnswer = remainingQuestions[randomIndex].correct_answer;

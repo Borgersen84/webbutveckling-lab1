@@ -6,13 +6,13 @@
 
 @media only screen and (width: 769px > 1024px) {
  :root {
-	 font-size: 0.8rem;
+	 font-size: 45%;
  }
 }
 
 @media only screen and (max-width: 600px) {
  :root {
-	 font-size: 0.5rem;
+	 font-size: 40%;
  }
 }
 
@@ -51,4 +51,9 @@ h1 {
 
 .playbutton:hover {
 	cursor: pointer;
+}
+
+#homebtn {
+	background-color: #D1E8F2;
+	margin-top: 2rem;
 }
